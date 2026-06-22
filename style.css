@@ -1,0 +1,892 @@
+/* ==============================================
+   たまげき — ポップカラーテーマ
+   多摩劇ウェブサイト デザインリニューアル
+   ============================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap');
+
+/* ==================
+   デザイントークン
+   ================== */
+:root {
+  /* ロゴ4色 */
+  --red:    #e84060;
+  --green:  #1fa84b;
+  --blue:   #4da8f0;
+  --yellow: #f0b430;
+
+  /* 薄い版 */
+  --red-dim:     rgba(232, 64,  96,  0.14);
+  --green-dim:   rgba(31,  168, 75,  0.14);
+  --blue-dim:    rgba(77,  168, 240, 0.14);
+  --yellow-dim:  rgba(240, 180, 48,  0.14);
+  --yellow-faint:rgba(240, 180, 48,  0.07);
+  --yellow-glow: rgba(240, 180, 48,  0.28);
+
+  /* 背景 */
+  --bg:      #0a0a0a;
+  --bg-2:    #111111;
+  --surface: #161616;
+  --glass:   rgba(16, 16, 16, 0.92);
+
+  /* テキスト */
+  --text:      #f2f2f2;
+  --text-soft: #999999;
+  --text-dim:  #555555;
+
+  /* ボーダー */
+  --border:   rgba(255, 255, 255, 0.08);
+  --border-2: rgba(255, 255, 255, 0.16);
+
+  /* 緞帳 */
+  --velvet-dark: #140000;
+  --velvet-mid:  #280008;
+  --velvet-lit:  #400012;
+}
+
+/* ==================
+   リセット・基本
+   ================== */
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic Pro', 'Meiryo', sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.9;
+}
+
+.hidden { display: none; }
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+/* ==================
+   入口ページ
+   ================== */
+.entrance-page {
+  min-height: 100vh;
+  background: var(--bg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 24px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* レインボーリンググロー */
+.entrance-page::before {
+  content: '';
+  position: absolute;
+  width: 560px;
+  height: 560px;
+  border-radius: 50%;
+  background: conic-gradient(
+    from 0deg,
+    rgba(77, 168, 240, 0.12),
+    rgba(31, 168, 75,  0.10),
+    rgba(240,180, 48,  0.12),
+    rgba(232, 64, 96,  0.10),
+    rgba(77, 168, 240, 0.12)
+  );
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  filter: blur(55px);
+  animation: entrance-spin 14s linear infinite;
+}
+
+@keyframes entrance-spin {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to   { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+.entrance-content {
+  position: relative;
+  z-index: 1;
+}
+
+.entrance-logo {
+  width: min(260px, 65vw);
+  height: auto;
+  display: block;
+  margin: 0 auto 20px;
+  animation: logo-float 5s ease-in-out infinite;
+}
+
+@keyframes logo-float {
+  0%, 100% {
+    transform: translateY(0px);
+    filter:
+      drop-shadow(0 10px 28px rgba(77, 168, 240, 0.35))
+      drop-shadow(0 0 50px rgba(232, 64, 96, 0.18))
+      drop-shadow(0 0 80px rgba(240, 180, 48, 0.12));
+  }
+  50% {
+    transform: translateY(-10px);
+    filter:
+      drop-shadow(0 20px 48px rgba(77, 168, 240, 0.55))
+      drop-shadow(0 0 80px rgba(232, 64, 96, 0.30))
+      drop-shadow(0 0 120px rgba(240, 180, 48, 0.20));
+  }
+}
+
+.small-title {
+  font-size: 11px;
+  letter-spacing: 0.26em;
+  color: var(--text-soft);
+  font-weight: 400;
+  text-transform: uppercase;
+  margin-bottom: 28px;
+  display: block;
+}
+
+.enter-button {
+  background: transparent;
+  color: var(--yellow);
+  border: none;
+  padding: 15px 54px;
+  font-size: 14px;
+  letter-spacing: 0.24em;
+  font-weight: 700;
+  transition: all 0.35s ease;
+  position: relative;
+  isolation: isolate;
+}
+
+/* グラデーションボーダー（ロゴの円を参考） */
+.enter-button::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 2px;
+  padding: 1.5px;
+  background: linear-gradient(90deg, var(--blue), var(--green), var(--yellow), var(--red));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+.enter-button:hover {
+  color: var(--text);
+  background: rgba(240, 180, 48, 0.07);
+  transform: translateY(-3px);
+  letter-spacing: 0.30em;
+}
+
+/* ==================
+   暗転レイヤー
+   ================== */
+.blackout-layer {
+  position: fixed;
+  inset: 0;
+  background: #000;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 99998;
+  transition: opacity 1.2s ease;
+}
+.blackout-layer.active { opacity: 1; }
+
+/* ==================
+   緞帳 — 深紅ビロード
+   ================== */
+.theater-effect {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  display: none;
+  background: #000;
+  overflow: hidden;
+  pointer-events: none;
+}
+.theater-effect.active { display: block; }
+
+.curtain {
+  position: absolute;
+  top: 0;
+  width: 50%;
+  height: 100%;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      var(--velvet-dark) 0px,
+      var(--velvet-mid)  9px,
+      var(--velvet-lit)  22px,
+      var(--velvet-mid)  35px,
+      var(--velvet-dark) 48px
+    );
+  box-shadow:
+    inset 0 0 120px rgba(0, 0, 0, 0.85),
+    0 0 80px rgba(0, 0, 0, 0.85);
+  transition: transform 1.25s ease-in-out;
+}
+
+.curtain-left {
+  left: 0;
+  border-right: 3px solid #0a0000;
+  transform: translateX(-100%);
+}
+.curtain-right {
+  right: 0;
+  border-left: 3px solid #0a0000;
+  transform: translateX(100%);
+}
+
+.theater-effect.close .curtain-left,
+.theater-effect.close .curtain-right { transform: translateX(0); }
+.theater-effect.open .curtain-left   { transform: translateX(-100%); }
+.theater-effect.open .curtain-right  { transform: translateX(100%); }
+
+/* ==================
+   ヘッダー
+   ================== */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(10, 10, 10, 0.92);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 36px;
+}
+
+/* レインボーグラデーションの下線 */
+.site-header::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--blue), var(--green), var(--yellow), var(--red));
+}
+
+.site-logo {
+  flex-shrink: 0;
+  cursor: pointer;
+  line-height: 0;
+}
+
+.site-logo img {
+  height: 38px;
+  width: auto;
+  display: block;
+  transition: opacity 0.25s ease;
+}
+
+.site-logo:hover img {
+  opacity: 0.75;
+}
+
+.global-nav {
+  display: flex;
+  gap: 2px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.global-nav button,
+.menu-grid button {
+  background: transparent;
+  border: none;
+  color: var(--text-soft);
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  padding: 8px 12px;
+  border-radius: 2px;
+  transition: color 0.2s ease, background 0.2s ease;
+  font-family: inherit;
+  font-weight: 700;
+}
+
+.global-nav button:hover {
+  color: var(--yellow);
+  background: var(--yellow-faint);
+}
+
+.menu-button {
+  display: none;
+  background: var(--yellow-faint);
+  color: var(--yellow);
+  border: 1px solid rgba(240, 180, 48, 0.28);
+  padding: 8px 14px;
+  border-radius: 3px;
+  font-family: inherit;
+  font-size: 16px;
+}
+
+/* ==================
+   ページ共通
+   ================== */
+.page {
+  display: none;
+  min-height: 80vh;
+}
+.page.active { display: block; }
+
+.white-page {
+  background: var(--surface);
+}
+
+.page-inner {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 72px 24px 96px;
+}
+
+/* h2 — 左にカラーバー */
+.page-inner h2 {
+  font-size: clamp(28px, 5vw, 50px);
+  margin-top: 0;
+  margin-bottom: 28px;
+  letter-spacing: 0.08em;
+  color: var(--text);
+  font-weight: 900;
+  padding-left: 18px;
+  position: relative;
+}
+
+.page-inner h2::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.08em;
+  bottom: 0.08em;
+  width: 5px;
+  background: linear-gradient(180deg, var(--blue), var(--green));
+  border-radius: 3px;
+}
+
+.page-inner h3 {
+  color: var(--yellow);
+  font-size: 12px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  margin-top: 36px;
+  margin-bottom: 14px;
+  font-weight: 700;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 8px;
+}
+
+.page-inner p {
+  color: var(--text-soft);
+  line-height: 2.0;
+}
+
+.page-inner ul {
+  color: var(--text-soft);
+  line-height: 2.2;
+  padding-left: 1.2em;
+}
+
+.page-inner strong {
+  color: var(--text);
+  font-weight: 700;
+}
+
+/* ==================
+   ホーム
+   ================== */
+#home {
+  background: var(--surface);
+}
+
+.hero {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 108px 24px 60px;
+  text-align: center;
+}
+
+.hero h2 {
+  font-size: clamp(30px, 6vw, 62px);
+  margin: 14px 0 28px;
+  letter-spacing: 0.16em;
+  color: var(--text);
+  font-weight: 900;
+}
+
+.hero .small-title {
+  font-size: 11px;
+}
+
+.hero p {
+  max-width: 680px;
+  margin-left: auto;
+  margin-right: auto;
+  color: var(--text-soft);
+  line-height: 2.1;
+}
+
+.menu-grid {
+  max-width: 860px;
+  margin: 0 auto 96px;
+  padding: 0 24px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.menu-grid button {
+  border: 1px solid var(--border);
+  padding: 24px 12px;
+  border-radius: 3px;
+  background: var(--bg-2);
+  font-size: 15px;
+  letter-spacing: 0.08em;
+  color: var(--text-soft);
+  font-weight: 700;
+  transition: all 0.28s ease;
+}
+
+/* 4色サイクルホバー */
+.menu-grid button:nth-child(4n+1):hover { color: var(--red);    background: var(--red-dim);    border-color: var(--red);    box-shadow: 0 4px 20px var(--red-dim); }
+.menu-grid button:nth-child(4n+2):hover { color: var(--green);  background: var(--green-dim);  border-color: var(--green);  box-shadow: 0 4px 20px var(--green-dim); }
+.menu-grid button:nth-child(4n+3):hover { color: var(--blue);   background: var(--blue-dim);   border-color: var(--blue);   box-shadow: 0 4px 20px var(--blue-dim); }
+.menu-grid button:nth-child(4n+4):hover { color: var(--yellow); background: var(--yellow-dim); border-color: var(--yellow); box-shadow: 0 4px 20px var(--yellow-dim); }
+
+.menu-grid button:hover {
+  transform: translateY(-3px);
+}
+
+/* ==================
+   カード共通
+   ================== */
+.info-card,
+.blog-card,
+.contact-box,
+.qa-item,
+.join-card {
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  padding: 28px;
+  background: var(--bg-2);
+  margin-bottom: 20px;
+  transition: border-color 0.25s ease, transform 0.25s ease;
+  border-left: 4px solid var(--yellow);
+}
+
+.info-card:hover,
+.blog-card:hover,
+.qa-item:hover,
+.join-card:hover {
+  border-color: var(--border-2);
+  transform: translateX(4px);
+}
+
+/* カード種別ごとの左ボーダー色 */
+.info-card { border-left-color: var(--blue); }
+.blog-card { border-left-color: var(--green); }
+.contact-box { border-left-color: var(--red); }
+
+.qa-item:nth-child(odd)  { border-left-color: var(--green); }
+.qa-item:nth-child(even) { border-left-color: var(--blue); }
+
+.join-card:nth-child(odd)  { border-left-color: var(--yellow); }
+.join-card:nth-child(even) { border-left-color: var(--red); }
+
+.info-card h3,
+.blog-card h3,
+.qa-item h3 {
+  color: var(--text);
+  letter-spacing: 0.08em;
+  font-size: 18px;
+  margin-top: 8px;
+  font-weight: 700;
+}
+
+.label {
+  color: var(--green);
+  font-size: 10px;
+  letter-spacing: 0.28em;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+/* ==================
+   公演アーカイブ
+   ================== */
+.archive-page {
+  background: var(--bg-2);
+  color: var(--text);
+}
+
+.archive-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 88px 24px 108px;
+}
+
+.archive-inner h2 {
+  font-size: clamp(32px, 6vw, 64px);
+  margin: 0 0 16px;
+  text-align: center;
+  letter-spacing: 0.18em;
+  color: var(--text);
+  font-weight: 900;
+}
+
+.archive-lead {
+  max-width: 720px;
+  margin: 0 auto 60px;
+  color: var(--text-soft);
+  text-align: center;
+  line-height: 2.1;
+  font-size: 14px;
+}
+
+.archive-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+/* ポスターカード */
+.poster-card {
+  position: relative;
+  height: 420px;
+  border-radius: 3px;
+  overflow: hidden;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  cursor: pointer;
+  transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+}
+
+.poster-placeholder {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--surface);
+  color: var(--text-dim);
+  font-size: 22px;
+  letter-spacing: 0.18em;
+  text-align: center;
+  padding: 16px;
+  font-weight: 700;
+}
+
+.poster-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: brightness(0.8) saturate(0.8);
+  transition: filter 0.5s ease;
+}
+
+.poster-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 40%, rgba(10, 10, 10, 0.88) 100%);
+  opacity: 0;
+  transition: opacity 0.45s ease;
+  z-index: 1;
+}
+
+.poster-info {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 30px 24px;
+  background: linear-gradient(transparent, rgba(10, 10, 10, 0.97));
+  transform: translateY(32%);
+  opacity: 0;
+  transition: all 0.45s ease;
+  z-index: 2;
+}
+
+.poster-info h3 {
+  margin: 0 0 8px;
+  font-size: 22px;
+  letter-spacing: 0.12em;
+  color: var(--text);
+  font-weight: 900;
+}
+
+.poster-info p {
+  margin: 0;
+  font-size: 13px;
+  color: var(--text-soft);
+  line-height: 1.75;
+}
+
+.poster-card:hover {
+  transform: translateY(-7px);
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.5), 0 0 0 1px var(--yellow);
+  border-color: var(--yellow);
+}
+
+.poster-card:hover::before { opacity: 1; }
+.poster-card:hover img { filter: brightness(0.6) saturate(0.85); }
+.poster-card:hover .poster-info {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* ==================
+   公演詳細ページ
+   ================== */
+.back-button {
+  background: transparent;
+  color: var(--yellow);
+  border: 1px solid var(--border);
+  padding: 10px 22px;
+  border-radius: 2px;
+  margin-bottom: 36px;
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  font-weight: 700;
+  transition: all 0.25s ease;
+  font-family: inherit;
+}
+.back-button:hover {
+  background: var(--yellow-faint);
+  border-color: var(--yellow);
+}
+
+.detail-year {
+  color: var(--text-soft);
+  font-weight: 400;
+  font-size: 13px;
+  letter-spacing: 0.16em;
+}
+
+.detail-layout {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 48px;
+  align-items: start;
+}
+
+
+
+.comment-box {
+  background: var(--bg-2);
+  border-left: 4px solid var(--yellow);
+  padding: 24px 28px;
+  border-radius: 0 3px 3px 0;
+  color: var(--text-soft);
+  line-height: 2.1;
+  font-style: italic;
+}
+
+/* ==================
+   フッター
+   ================== */
+.site-footer {
+  text-align: center;
+  padding: 28px;
+  color: var(--text-dim);
+  background: var(--bg-2);
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  font-weight: 400;
+  position: relative;
+}
+
+.site-footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--blue), var(--green), var(--yellow), var(--red));
+}
+
+/* ==================
+   スマホ対応
+   ================== */
+@media (max-width: 800px) {
+  .site-header {
+    padding: 10px 18px;
+    align-items: center;
+    position: relative;
+  }
+
+  .menu-button {
+    display: block;
+  }
+
+  .global-nav {
+    display: none;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    right: 0;
+    background: rgba(10, 10, 10, 0.97);
+    backdrop-filter: blur(18px);
+    border-bottom: 1px solid var(--border);
+    padding: 12px;
+    flex-direction: column;
+  }
+
+  .global-nav.open {
+    display: flex;
+  }
+
+  .global-nav button {
+    text-align: left;
+    padding: 14px;
+  }
+
+  .menu-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .archive-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .poster-card {
+    height: 360px;
+  }
+
+  .detail-layout {
+    grid-template-columns: 1fr;
+  }
+
+
+
+  .join-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .page-inner,
+  .archive-inner {
+    padding-top: 48px;
+  }
+}
+
+/* ==================
+   v6 強制修正（継承）
+   ================== */
+body.entered .entrance-page {
+  display: none !important;
+}
+
+body.entered .site {
+  display: block !important;
+}
+
+/* ==================
+   公演アーカイブ — 年度タブ
+   ================== */
+.archive-year-tabs {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 36px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--border);
+}
+
+.year-tab {
+  background: transparent;
+  color: var(--text-soft);
+  border: 1px solid var(--border);
+  padding: 9px 22px;
+  border-radius: 2px;
+  font-size: 14px;
+  letter-spacing: 0.1em;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.22s ease;
+  font-family: inherit;
+}
+
+.year-tab:hover {
+  color: var(--yellow);
+  border-color: var(--yellow);
+  background: var(--yellow-faint);
+}
+
+.year-tab.active {
+  color: var(--bg);
+  background: var(--yellow);
+  border-color: var(--yellow);
+}
+
+.archive-empty {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 60px 0;
+  color: var(--text-dim);
+  letter-spacing: 0.14em;
+  font-size: 14px;
+}
+
+.role-list{display:flex;flex-direction:column;gap:24px}.role-card{display:grid;grid-template-columns:320px 1fr;gap:24px}.role-slideshow{height:200px;background:#222;background-size:cover}@media(max-width:768px){.role-card{grid-template-columns:1fr}}
+
+
+.site-footer{
+  padding:20px;
+  text-align:center;
+}
+.footer-social{
+  display:flex;
+  justify-content:center;
+  gap:16px;
+  margin-bottom:10px;
+}
+.footer-social img{
+  width:32px;
+  height:32px;
+  object-fit:contain;
+  border-radius:6px;
+  transition:transform .2s ease;
+}
+.footer-social img:hover{
+  transform:scale(1.1);
+}
+footer a{
+  color: #f0b430;
+}
+
+.kouen-poster{
+  display: block;
+  width: 100%;
+  max-width: 500px;
+  margin: 15px auto;
+  border-radius: 8px;
+  object-fit: contain
+}
+
+.youtube-box a {
+  color: #1a73e8;
+  text-decoration: underline;
+}
+
+.youtube-box a:hover {
+  opacity: 0.7;
+}
+
+.detail-poster-wrap {
+  width: min(100%, 520px);
+  margin: 0 auto 32px;
+  text-align: center;
+}
+
+.detail-poster-wrap img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 720px;
+  margin: 0 auto;
+  object-fit: contain;
+}

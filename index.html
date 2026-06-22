@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>多摩劇｜法政大学公認演劇サークル</title>
+
+  <!-- Google Fonts — ポップカラーテーマ -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <!-- =========================
+       劇場入口ページ
+       ========================= -->
+  <section id="entrance" class="entrance-page">
+    <div class="entrance-content">
+      <img src="assets/logo.png" class="entrance-logo" alt="多摩劇" />
+      <p class="small-title">Hosei University Tama Theater Circle</p>
+      <button id="enterButton" class="enter-button">劇場へ入る</button>
+    </div>
+  </section>
+
+  <!-- =========================
+       左右カーテン演出
+       ========================= -->
+  <div id="blackoutLayer" class="blackout-layer"></div>
+  <div id="theaterEffect" class="theater-effect">
+    <div class="curtain curtain-left"></div>
+    <div class="curtain curtain-right"></div>
+  </div>
+
+  <!-- =========================
+       サイト本体
+       ========================= -->
+  <div id="site" class="site hidden">
+
+    <!-- ヘッダー -->
+    <header class="site-header">
+      <div class="site-logo" data-page="home"><img src="assets/logo.png" alt="多摩劇" /></div>
+
+      <button id="menuButton" class="menu-button">☰</button>
+
+      <nav id="globalNav" class="global-nav">
+        <button data-page="info">公演情報</button>
+        <button data-page="roles">役職紹介</button>
+        <button data-page="archive">公演アーカイブ</button>
+        <button data-page="blog">たまげきブログ</button>
+        <button data-page="radio">たまり場ラジオ</button>
+          <button data-page="qa">よくある質問</button>
+      </nav>
+    </header>
+
+    <main>
+      <!-- ホーム -->
+      <section id="home" class="page active white-page">
+        <div class="hero">
+          <p class="small-title">Hosei University Tama Theater Circle</p>
+          <h2>ようこそ、多摩劇へ。</h2>
+          <p>
+           多摩劇は、法政大学多摩キャンパスを拠点に<br>活動する演劇サークルです！<br>
+            役者、演出、照明、音響、制作、宣伝など、<br>さまざまな役職からひとつの舞台をつくっています！
+          </p>
+        </div>
+
+        <div class="menu-grid">
+          <button data-page="info">公演情報</button>
+          <button data-page="roles">役職紹介</button>
+          <button data-page="archive">公演アーカイブ</button>
+          <button data-page="blog">たまげきブログ</button>
+          <button data-page="radio">たまり場ラジオ</button>
+          <button data-page="qa">よくある質問</button>
+        </div>
+      </section>
+
+      <!-- 公演情報 -->
+      <section id="info" class="page white-page">
+        <div class="page-inner">
+          <h2>公演情報</h2>
+          <p>
+           最新公演の日程、会場、詳細などをここにまとめています。
+          </p>
+          <div class="info-card">
+            <p class="label">Next Stage</p>
+            <img src="assets/poster/kucchan.png"alt="くっちゃんポスター"class="kouen-poster">
+            <h3>くっちゃ</h3>
+            <p>日程：<br>7月17日、18日</p>
+            <p>会場：<br>法政大学多摩キャンパス<br>EGG DOME 5階ホール</p>
+            <p>上演時間：<br>調整中</p>
+            <p>あらすじ：<br>
+2015年、今よりまだ人と人の距離が少し近かった頃。
+都心から少し離れた町の商店街で、弁当屋「食っちゃん」は営業している。<br>
+
+人情味あふれる名物店長の父・将志のもとで働く息子・大志は、母・弘恵、大学生バイトの真琴とともに、日々厨房に立つ。<br>
+
+いつかこの店を継ぐことを見据えながら、料理の腕を磨き、工夫を重ねる大志。
+しかし、なかなか父・将志の作る味には届かずにいた。<br>
+
+そんな食っちゃんに、ある日、一人の客が訪れる。
+近くに新しい大型商業施設ができ、町にも変化が訪れようとしている中、食っちゃんに舞い込んでくる前代未聞の注文。<br>
+
+誰かに作ること。
+誰かと食べること。
+誰かの明日を、少しだけ支えること。<br>
+
+笑って、少しお腹が空いて、帰り道に誰かとご飯を食べたくなる。
+小さな弁当屋からはじまる、あたたかな群像劇。</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 公演アーカイブ -->
+      <section id="archive" class="page archive-page">
+        <div class="archive-inner">
+          <h2>公演アーカイブ</h2>
+
+          <div class="archive-year-tabs" id="archiveYearTabs">
+            <button class="year-tab active" data-year="all">すべて</button>
+            <button class="year-tab" data-year="2026年度">2026年度</button>
+            <button class="year-tab" data-year="2025年度">2025年度</button>
+            <button class="year-tab" data-year="2024年度">2024年度</button>
+            <button class="year-tab" data-year="2023年度">2023年度</button>
+            <button class="year-tab" data-year="2022年度">2022年度</button>
+          </div>
+          <div id="archiveGrid" class="archive-grid"></div>
+        </div>
+      </section>
+
+      <!-- 公演詳細 -->
+      <section id="performanceDetail" class="page white-page">
+        <div class="page-inner">
+          <button id="backToArchive" class="back-button">← 公演アーカイブへ戻る</button>
+
+<div id="detailPosterWrap" class="detail-poster-wrap">
+  <img id="detailPoster" src="" alt="">
+</div>
+
+          <h2 id="detailTitle">公演タイトル</h2>
+          <p id="detailYear" class="detail-year"></p>
+
+          <div class="detail-layout">
+            <div>
+              
+              <h3>公演情報</h3>
+              <p><strong>公演日程：</strong><span id="detailDate"></span></p>
+              <p><strong>会場：</strong><span id="detailPlace"></span></p>
+              <h3>あらすじ</h3>
+              <p id="detailStory"></p>
+
+            </div>
+
+            <div>
+              <h3>公演映像</h3>
+              <div class="youtube-box">
+                <a
+                  id="detailYoutube"
+                  href="#"
+                  target="_blank"
+                  rel="noopener noreferrer">
+              </a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- たまり場ラジオ -->
+      <section id="radio" class="page white-page">
+        <div class="page-inner">
+          <h2>たまり場ラジオ</h2>
+          <p>
+            Coming Soon
+          </p>
+        </div>
+      </section>
+
+      <section id="roles" class="page white-page"><div class="page-inner"><h2>役職紹介</h2><p>多摩劇ではさまざまな役職が協力しながら一つの舞台をつくり上げている。</p><div class="role-list"><div class="role-card"><div class="role-slideshow" data-role="actor"></div><div><h3>役者</h3><p>舞台上で物語を届ける存在。</p></div></div><div class="role-card"><div class="role-slideshow" data-role="director"></div><div><h3>演出</h3><p>作品全体の方向性を決める。</p></div></div><div class="role-card"><div class="role-slideshow" data-role="sound"></div><div><h3>音響</h3><p>音で舞台を支える。</p></div></div><div class="role-card"><div class="role-slideshow" data-role="light"></div><div><h3>照明</h3><p>光で空間を演出する。</p></div></div><div class="role-card"><div class="role-slideshow" data-role="production"></div><div><h3>制作</h3><p>公演運営を支える。</p></div></div><div class="role-card"><div class="role-slideshow" data-role="publicity"></div><div><h3>宣伝</h3><p>公演の魅力を発信する。</p></div></div></div></div></section><!-- Q&A -->
+      <section id="qa" class="page white-page">
+        <div class="page-inner">
+          <h2>よくある質問</h2>
+
+          <div class="qa-item">
+            <h3>演劇未経験でも入れますか？</h3>
+            <p>もちろん入れる。大学から演劇を始めた団員も多数活躍中だ。</p>
+          </div>
+
+          <div class="qa-item">
+            <h3>役者以外でも参加できますか？</h3>
+            <p>
+              参加できる。照明、音響、舞台美術、制作、衣装、小道具など、舞台には多くの部署がある。
+            </p>
+          </div>
+
+          <div class="qa-item">
+            <h3>見学だけでも大丈夫ですか？</h3>
+            <p>大丈夫だ。まずは稽古場の雰囲気を見るところから始められる。</p>
+          </div>
+          </div>
+      </section>
+
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-social">
+        <a href="https://x.com/Htamageki" target="_blank" rel="noopener noreferrer">
+          <img src="assets/xicon.jpg" alt="X">
+        </a>
+        <a href="https://www.instagram.com/htamageki/" target="_blank" rel="noopener noreferrer">
+          <img src="assets/instagram.png" alt="Instagram">
+        </a>
+      </div>
+      <p><strong>Gmail:<a href="tamageki.hosei@gmail.com">tamageki.hosei@gmail.com</a></strong></p>
+      <p>© 多摩劇 — Tama Geki</p>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
