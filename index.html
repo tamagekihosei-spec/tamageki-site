@@ -14,6 +14,11 @@
 </head>
 
 <body>
+  <script>
+  if (sessionStorage.getItem("siteEntered") === "1") {
+    document.documentElement.classList.add("skip-entrance");
+  }
+  </script>
   <!-- =========================
        劇場入口ページ
        ========================= -->
@@ -78,57 +83,7 @@
       </section>
 
       <!-- 公演情報 -->
-      <section id="info" class="page white-page">
-        <div class="page-inner">
-          <h2>公演情報</h2>
-          <p>
-           最新公演の日程、会場、詳細などをここにまとめています。
-          </p>
-          <div class="info-card">
-            <p class="label">Next Stage</p>
-            <img src="assets/poster/kucchan.png"alt="くっちゃんポスター"class="kouen-poster">
-            <h3>くっちゃ</h3>
-            <p>日程：<br>7月17日、18日</p>
-            <p>会場：<br>法政大学多摩キャンパス<br>EGG DOME 5階ホール</p>
-            <p>上演時間：<br>調整中</p>
-            <p>あらすじ：<br>
-2015年、今よりまだ人と人の距離が少し近かった頃。
-都心から少し離れた町の商店街で、弁当屋「食っちゃん」は営業している。<br>
-
-人情味あふれる名物店長の父・将志のもとで働く息子・大志は、母・弘恵、大学生バイトの真琴とともに、日々厨房に立つ。<br>
-
-いつかこの店を継ぐことを見据えながら、料理の腕を磨き、工夫を重ねる大志。
-しかし、なかなか父・将志の作る味には届かずにいた。<br>
-
-そんな食っちゃんに、ある日、一人の客が訪れる。
-近くに新しい大型商業施設ができ、町にも変化が訪れようとしている中、食っちゃんに舞い込んでくる前代未聞の注文。<br>
-
-誰かに作ること。
-誰かと食べること。
-誰かの明日を、少しだけ支えること。<br>
-
-笑って、少しお腹が空いて、帰り道に誰かとご飯を食べたくなる。
-小さな弁当屋からはじまる、あたたかな群像劇。</p>
-          </div>
-        </div>
-      </section>
-
-      <!-- 公演アーカイブ -->
-      <section id="archive" class="page archive-page">
-        <div class="archive-inner">
-          <h2>公演アーカイブ</h2>
-
-          <div class="archive-year-tabs" id="archiveYearTabs">
-            <button class="year-tab active" data-year="all">すべて</button>
-            <button class="year-tab" data-year="2026年度">2026年度</button>
-            <button class="year-tab" data-year="2025年度">2025年度</button>
-            <button class="year-tab" data-year="2024年度">2024年度</button>
-            <button class="year-tab" data-year="2023年度">2023年度</button>
-            <button class="year-tab" data-year="2022年度">2022年度</button>
-          </div>
-          <div id="archiveGrid" class="archive-grid"></div>
-        </div>
-      </section>
+      
 
       <!-- 公演詳細 -->
       <section id="performanceDetail" class="page white-page">

@@ -181,6 +181,8 @@ enterButton.addEventListener("click", () => {
     site.style.display = "block";
 
     showPage("home");
+    
+    sessionStorage.setItem("siteEntered", "1");
 
     // 明転開始
     blackoutLayer.classList.remove("active");
@@ -243,6 +245,12 @@ pageButtons.forEach((button) => {
       window.open("https://tamageki.hatenablog.com/", "_blank");
       return;
     }
+
+    if (pageId === "info") {
+    window.location.href = "kouen.html";
+    return;
+    }
+
     showPage(pageId);
   });
 });
@@ -409,6 +417,12 @@ backToArchive.addEventListener("click", () => {
 */
 
 renderArchive();
+
+if (sessionStorage.getItem("siteEntered") === "1") {
+  const params = new URLSearchParams(window.location.search);
+  const goTo = params.get("page") || "home";
+  showPage(goTo);
+}
 
 // v6: entrance page is permanently hidden after enter button is clicked.
 

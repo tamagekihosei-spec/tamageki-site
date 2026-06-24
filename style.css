@@ -890,3 +890,6 @@ footer a{
   margin: 0 auto;
   object-fit: contain;
 }
+
+html.skip-entrance .entrance-page { display: none !important; }
+html.skip-entrance #site          { display: block !important; }
