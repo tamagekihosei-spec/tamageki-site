@@ -52,11 +52,11 @@
 
       <nav id="globalNav" class="global-nav">
         <button data-page="info">公演情報</button>
-        <button data-page="roles">役職紹介</button>
+        <button onclick="location.href='roles.html'">役職紹介</button>
         <button data-page="archive">公演アーカイブ</button>
         <button data-page="blog">たまげきブログ</button>
-        <button data-page="radio">たまり場ラジオ</button>
-          <button data-page="qa">よくある質問</button>
+        <button onclick="location.href='radio.html'">たまり場ラジオ</button>
+        <button onclick="location.href='qa.html'">よくある質問</button>
       </nav>
     </header>
 
@@ -74,11 +74,11 @@
 
         <div class="menu-grid">
           <button data-page="info">公演情報</button>
-          <button data-page="roles">役職紹介</button>
+          <button onclick="location.href='roles.html'">役職紹介</button>
           <button data-page="archive">公演アーカイブ</button>
           <button data-page="blog">たまげきブログ</button>
-          <button data-page="radio">たまり場ラジオ</button>
-          <button data-page="qa">よくある質問</button>
+          <button onclick="location.href='radio.html'">たまり場ラジオ</button>
+          <button onclick="location.href='qa.html'">よくある質問</button>
         </div>
       </section>
 
@@ -96,79 +96,7 @@
 
 </section>
 
-<!-- 公演詳細 -->
-<section id="performanceDetail" class="page white-page">
-        <div class="page-inner">
-          <button id="backToArchive" class="back-button">← 公演アーカイブへ戻る</button>
-
-      <div id="detailPosterWrap" class="detail-poster-wrap">
-       <img id="detailPoster" src="" alt="">
-      </div>
-
-          <h2 id="detailTitle">公演タイトル</h2>
-          <p id="detailYear" class="detail-year"></p>
-
-          <div class="detail-layout">
-            <div>
-              
-              <h3>公演情報</h3>
-              <p><strong>公演日程：</strong><span id="detailDate"></span></p>
-              <p><strong>会場：</strong><span id="detailPlace"></span></p>
-              <h3>あらすじ</h3>
-              <p id="detailStory"></p>
-
-            </div>
-
-            <div>
-              <h3>公演映像</h3>
-              <div class="youtube-box">
-                <a
-                  id="detailYoutube"
-                  href="#"
-                  target="_blank"
-                  rel="noopener noreferrer">
-              </a>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </section>
-
-      <!-- たまり場ラジオ -->
-      <section id="radio" class="page white-page">
-        <div class="page-inner">
-          <h2>たまり場ラジオ</h2>
-          <p>
-            Coming Soon
-          </p>
-        </div>
-      </section>
-
-      <section id="roles" class="page white-page"><div class="page-inner"><h2>役職紹介</h2><p>多摩劇ではさまざまな役職が協力しながら一つの舞台をつくり上げている。</p><div class="role-list"><div class="role-card"><div class="role-slideshow" data-role="actor"></div><div><h3>役者</h3><p>舞台上で物語を届ける存在。</p></div></div><div class="role-card"><div class="role-slideshow" data-role="director"></div><div><h3>演出</h3><p>作品全体の方向性を決める。</p></div></div><div class="role-card"><div class="role-slideshow" data-role="sound"></div><div><h3>音響</h3><p>音で舞台を支える。</p></div></div><div class="role-card"><div class="role-slideshow" data-role="light"></div><div><h3>照明</h3><p>光で空間を演出する。</p></div></div><div class="role-card"><div class="role-slideshow" data-role="production"></div><div><h3>制作</h3><p>公演運営を支える。</p></div></div><div class="role-card"><div class="role-slideshow" data-role="publicity"></div><div><h3>宣伝</h3><p>公演の魅力を発信する。</p></div></div></div></div></section><!-- Q&A -->
-      <section id="qa" class="page white-page">
-        <div class="page-inner">
-          <h2>よくある質問</h2>
-
-          <div class="qa-item">
-            <h3>演劇未経験でも入れますか？</h3>
-            <p>もちろん入れる。大学から演劇を始めた団員も多数活躍中だ。</p>
-          </div>
-
-          <div class="qa-item">
-            <h3>役者以外でも参加できますか？</h3>
-            <p>
-              参加できる。照明、音響、舞台美術、制作、衣装、小道具など、舞台には多くの部署がある。
-            </p>
-          </div>
-
-          <div class="qa-item">
-            <h3>見学だけでも大丈夫ですか？</h3>
-            <p>大丈夫だ。まずは稽古場の雰囲気を見るところから始められる。</p>
-          </div>
-          </div>
-      </section>
-
+      
     </main>
 
     <footer class="site-footer">
@@ -180,7 +108,7 @@
           <img src="assets/instagram.png" alt="Instagram">
         </a>
       </div>
-      <p><strong>Gmail:<a href="tamageki.hosei@gmail.com">tamageki.hosei@gmail.com</a></strong></p>
+      <p><strong>Gmail:<a href="mailto:tamageki.hosei@gmail.com">tamageki.hosei@gmail.com</a></strong></p>
       <p>© 多摩劇 — Tama Geki</p>
     </footer>
   </div>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>役職紹介｜多摩劇</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body class="entered">
+  <div id="site" class="site">
+
+    <header class="site-header">
+      <div class="site-logo" onclick="location.href='index.html'">
+        <img src="assets/logo.png" alt="多摩劇" />
+      </div>
+      <button id="menuButton" class="menu-button">☰</button>
+      <nav id="globalNav" class="global-nav">
+        <button onclick="location.href='kouen.html'">公演情報</button>
+        <button style="color: var(--yellow);">役職紹介</button>
+        <button onclick="location.href='index.html?page=archive'">公演アーカイブ</button>
+        <button onclick="window.open('https://tamageki.hatenablog.com/', '_blank')">たまげきブログ</button>
+        <button onclick="location.href='radio.html'">たまり場ラジオ</button>
+        <button onclick="location.href='qa.html'">よくある質問</button>
+      </nav>
+    </header>
+
+    <main>
+      <section class="page active white-page">
+        <div class="page-inner">
+          <h2>役職紹介</h2>
+          <p>多摩劇ではさまざまな役職が協力しながら一つの舞台をつくり上げている。</p>
+          <div class="role-list">
+            <div class="role-card">
+              <div class="role-slideshow" data-role="actor"></div>
+              <div><h3>役者</h3><p>舞台上で物語を届ける存在。</p></div>
+            </div>
+            <div class="role-card">
+              <div class="role-slideshow" data-role="director"></div>
+              <div><h3>演出</h3><p>作品全体の方向性を決める。</p></div>
+            </div>
+            <div class="role-card">
+              <div class="role-slideshow" data-role="sound"></div>
+              <div><h3>音響</h3><p>音で舞台を支える。</p></div>
+            </div>
+            <div class="role-card">
+              <div class="role-slideshow" data-role="light"></div>
+              <div><h3>照明</h3><p>光で空間を演出する。</p></div>
+            </div>
+            <div class="role-card">
+              <div class="role-slideshow" data-role="production"></div>
+              <div><h3>制作</h3><p>公演運営を支える。</p></div>
+            </div>
+            <div class="role-card">
+              <div class="role-slideshow" data-role="publicity"></div>
+              <div><h3>宣伝</h3><p>公演の魅力を発信する。</p></div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-social">
+        <a href="https://x.com/Htamageki" target="_blank" rel="noopener noreferrer">
+          <img src="assets/xicon.jpg" alt="X">
+        </a>
+        <a href="https://www.instagram.com/htamageki/" target="_blank" rel="noopener noreferrer">
+          <img src="assets/instagram.png" alt="Instagram">
+        </a>
+      </div>
+      <p><strong>Gmail:<a href="mailto:tamageki.hosei@gmail.com">tamageki.hosei@gmail.com</a></strong></p>
+      <p>© 多摩劇 — Tama Geki</p>
+    </footer>
+
+  </div>
+
+  <script>
+    // セッションフラグのセット
+    sessionStorage.setItem("siteEntered", "1");
+
+    // ハンバーガーメニュー
+    document.getElementById("menuButton").addEventListener("click", () => {
+      document.getElementById("globalNav").classList.toggle("open");
+    });
+
+    // 役職スライドショー（script.js から移植）
+    const roleImages = { actor: [''] };
+    document.querySelectorAll('.role-slideshow').forEach(b => {
+      const arr = roleImages[b.dataset.role] || [];
+      let i = 0;
+      const f = () => {
+        if (arr.length) b.style.backgroundImage = `url('${arr[i++ % arr.length]}')`;
+      };
+      f();
+      if (arr.length > 1) setInterval(f, 3000);
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>よくある質問｜多摩劇</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body class="entered">
+  <div id="site" class="site">
+
+    <header class="site-header">
+      <div class="site-logo" onclick="location.href='index.html'">
+        <img src="assets/logo.png" alt="多摩劇" />
+      </div>
+      <button id="menuButton" class="menu-button">☰</button>
+      <nav id="globalNav" class="global-nav">
+        <button onclick="location.href='kouen.html'">公演情報</button>
+        <button onclick="location.href='roles.html'">役職紹介</button>
+        <button onclick="location.href='index.html?page=archive'">公演アーカイブ</button>
+        <button onclick="window.open('https://tamageki.hatenablog.com/', '_blank')">たまげきブログ</button>
+        <button onclick="location.href='radio.html'">たまり場ラジオ</button>
+        <button style="color: var(--yellow);">よくある質問</button>
+      </nav>
+    </header>
+
+    <main>
+      <section class="page active white-page">
+        <div class="page-inner">
+          <h2>よくある質問</h2>
+
+          <div class="qa-item">
+            <h3>演劇未経験でも入れますか？</h3>
+            <p>もちろん入れる。大学から演劇を始めた団員も多数活躍中だ。</p>
+          </div>
+
+          <div class="qa-item">
+            <h3>役者以外でも参加できますか？</h3>
+            <p>参加できる。照明、音響、舞台美術、制作、衣装、小道具など、舞台には多くの部署がある。</p>
+          </div>
+
+          <div class="qa-item">
+            <h3>見学だけでも大丈夫ですか？</h3>
+            <p>大丈夫だ。まずは稽古場の雰囲気を見るところから始められる。</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-social">
+        <a href="https://x.com/Htamageki" target="_blank" rel="noopener noreferrer">
+          <img src="assets/xicon.jpg" alt="X">
+        </a>
+        <a href="https://www.instagram.com/htamageki/" target="_blank" rel="noopener noreferrer">
+          <img src="assets/instagram.png" alt="Instagram">
+        </a>
+      </div>
+      <p><strong>Gmail:<a href="mailto:tamageki.hosei@gmail.com">tamageki.hosei@gmail.com</a></strong></p>
+      <p>© 多摩劇 — Tama Geki</p>
+    </footer>
+
+  </div>
+
+  <script>
+    // セッションフラグのセット
+    sessionStorage.setItem("siteEntered", "1");
+
+    // ハンバーガーメニュー
+    document.getElementById("menuButton").addEventListener("click", () => {
+      document.getElementById("globalNav").classList.toggle("open");
+    });
+  </script>
+</body>
+</html>

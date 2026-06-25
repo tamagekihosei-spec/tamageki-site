@@ -404,9 +404,11 @@ if (performance.youtube && performance.youtube.url) {
 }
 
 /* 公演詳細ページからアーカイブへ戻る */
-backToArchive.addEventListener("click", () => {
-  showPage("archive");
-});
+if (backToArchive) {
+  backToArchive.addEventListener("click", () => {
+    showPage("archive");
+  });
+}
 
 /* =========================
    初期化
@@ -416,7 +418,7 @@ backToArchive.addEventListener("click", () => {
   ページを読み込んだ時点で、公演アーカイブを作っておく。
 */
 
-renderArchive();
+if (archiveGrid) renderArchive();
 
 if (sessionStorage.getItem("siteEntered") === "1") {
   const params = new URLSearchParams(window.location.search);
