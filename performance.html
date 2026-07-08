@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>たまり場ラジオ｜多摩劇</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body class="entered">
+  <div id="site" class="site">
+
+    <header class="site-header">
+      <div class="site-logo" onclick="location.href='index.html'">
+        <img src="assets/logo.png" alt="多摩劇" />
+      </div>
+      <button id="menuButton" class="menu-button">☰</button>
+      <nav id="globalNav" class="global-nav">
+        <button onclick="location.href='kouen.html'">公演情報</button>
+        <button onclick="location.href='roles.html'">役職紹介</button>
+        <button style="color: var(--yellow);">公演アーカイブ</button>
+        <button onclick="window.open('https://tamageki.hatenablog.com/', '_blank')">たまげきブログ</button>
+        <button onclick="location.href='radio.html'">たまり場ラジオ</button>
+        <button onclick="location.href='qa.html'">よくある質問</button>
+      </nav>
+    </header>
+
+<main>
+  <section class="archive-page">
+    <div class="page-inner">
+
+      <button class="back-button" onclick="history.back()">← 公演アーカイブへ戻る</button>
+
+      <h2 id="detailTitle"></h2>
+      <p class="detail-year" id="detailYear"></p>
+
+      <div id="detailPosterWrap" class="detail-poster-wrap">
+        <img id="detailPoster">
+      </div>
+
+      <div class="info-card">
+        <p><strong>日時</strong></p>
+        <p id="detailDate"></p>
+
+        <p><strong>会場</strong></p>
+        <p id="detailPlace"></p>
+
+        <p><strong>あらすじ</strong></p>
+        <p id="detailStory"></p>
+
+        <p class="youtube-box">
+          <a id="detailYoutube" target="_blank"></a>
+        </p>
+      </div>
+
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+      <div class="footer-social">
+        <a href="https://x.com/Htamageki" target="_blank" rel="noopener noreferrer">
+          <img src="assets/xicon.jpg" alt="X">
+        </a>
+        <a href="https://www.instagram.com/htamageki/" target="_blank" rel="noopener noreferrer">
+          <img src="assets/instagram.png" alt="Instagram">
+        </a>
+      </div>
+      <p><strong>Gmail:<a href="mailto:tamageki.hosei@gmail.com">tamageki.hosei@gmail.com</a></strong></p>
+      <p>© 多摩劇 — Tama Geki</p>
+    </footer>
+
+<script src="script.js"></script>
+
+  </div>
+</body>
+</html>

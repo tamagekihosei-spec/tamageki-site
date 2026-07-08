@@ -29,8 +29,9 @@
     </header>
 
 <main>
-      <!-- 公演アーカイブ -->
-<section id="archive" class="page white-page archive-page">
+
+ <section id="archive">
+
   <div class="archive-inner">
 
     <h2>公演アーカイブ</h2>
@@ -39,9 +40,23 @@
       これまでの多摩劇の公演記録です。
     </p>
 
-<p>coming soon</p><!-- ここにsection入れる -->
+    <div class="archive-year-tabs">
+      <button class="year-tab active" data-year="all">すべて</button>
+      <button class="year-tab" data-year="2026年度">2026年度</button>
+      <button class="year-tab" data-year="2025年度">2025年度</button>
+      <button class="year-tab" data-year="2024年度">2024年度</button>
+      <button class="year-tab" data-year="2023年度">2023年度</button>
+      <button class="year-tab" data-year="2022年度">2022年度</button>
+    </div>
+
+    <div id="archiveGrid" class="archive-grid">
+      
+    </div>
+
+  </div>
 
 </section>
+
 </main>
 
 <footer class="site-footer">
@@ -59,14 +74,18 @@
 
   </div>
 
-  <script>
-    // このページが開かれた時点でフラグをセット
-    sessionStorage.setItem("siteEntered", "1");
+  <script src="script.js"></script>
 
-    // ハンバーガーメニュー
-    document.getElementById("menuButton").addEventListener("click", () => {
-      document.getElementById("globalNav").classList.toggle("open");
-    });
-  </script>
+<script>
+  sessionStorage.setItem("siteEntered", "1");
+
+  document.getElementById("menuButton").addEventListener("click", () => {
+    document.getElementById("globalNav").classList.toggle("open");
+  });
+
+  // 初期表示
+  renderArchive("all");
+</script>
+
 </body>
 </html>
