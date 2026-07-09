@@ -85,8 +85,8 @@ const performances = [
     story:
       "ここは、都内某所にある便利屋<STEP>。若者5人のみの零細企業で、引っ越し、ゴミ屋敷の掃除、浮気調査など、様々な雑務をこなす。しかし、どうやら決して公にすることのできない「裏の仕事」を引き受けているようで......",
     youtube: {
-      url:"https://www.youtube.com/watch?v=Ay-VZy-OuEY",
-      label:"冬公演「STEP!」(YouTube)"
+      url:"",
+      label:""
     }
   }
 ];
