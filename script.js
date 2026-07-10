@@ -41,6 +41,22 @@ const performances = [
       label:"新歓公演「取り残された館」(YouTube)"
     }
   },
+        {
+    id: "25ichikou",
+    title: "一年生公演「なんでも運送業」",
+    year: "2025年度",
+    date: "2026年3月13日、14日",
+    place: "法政大学多摩キャンパス EGG DOME 5階ホール",
+    poster: "assets/poster/25kouen/25ichikou.jpg",
+    shortStory:
+      "ここは何でも運送業。大手が引き受けない「ワケあり」の荷物も配達します。秘密は必ず守りますから安心してください……",
+    story:
+      "ここは何でも運送業。大手が引き受けない「ワケあり」の荷物も配達します。秘密は必ず守りますから安心してください……",
+    youtube: {
+      url:"https://youtu.be/sAvgP-MDXlI?si=XL4ps5NXOP8dfg-C",
+      label:"一年生公演「なんでも運送業」(YouTube)"
+    }
+  },
   {
     id: "25shinkan",
     title: "新歓公演「カリカチュアの少女A」",
@@ -85,8 +101,8 @@ const performances = [
     story:
       "ここは、都内某所にある便利屋<STEP>。若者5人のみの零細企業で、引っ越し、ゴミ屋敷の掃除、浮気調査など、様々な雑務をこなす。しかし、どうやら決して公にすることのできない「裏の仕事」を引き受けているようで......",
     youtube: {
-      url:"",
-      label:""
+      url:"https://www.youtube.com/watch?v=Ay-VZy-OuEY",
+      label:"冬公演「STEP!」(YouTube)"
     }
   }
 ];
